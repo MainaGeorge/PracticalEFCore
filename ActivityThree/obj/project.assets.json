@@ -757,6 +757,19 @@
             "rid": "win"
           }
         }
+      },
+      "EFCore_Library/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v6.0",
+        "dependencies": {
+          "Microsoft.EntityFrameworkCore": "6.0.1"
+        },
+        "compile": {
+          "bin/placeholder/EFCore_Library.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/EFCore_Library.dll": {}
+        }
       }
     }
   },
@@ -2185,10 +2198,16 @@
         "useSharedDesignerContext.txt",
         "version.txt"
       ]
+    },
+    "EFCore_Library/1.0.0": {
+      "type": "project",
+      "path": "../EFCore_Library/EFCore_Library.csproj",
+      "msbuildProject": "../EFCore_Library/EFCore_Library.csproj"
     }
   },
   "projectFileDependencyGroups": {
     "net6.0": [
+      "EFCore_Library >= 1.0.0",
       "Microsoft.EntityFrameworkCore >= 6.0.1",
       "Microsoft.EntityFrameworkCore.Design >= 6.0.1",
       "Microsoft.EntityFrameworkCore.SqlServer >= 6.0.1",
@@ -2224,7 +2243,11 @@
       "frameworks": {
         "net6.0": {
           "targetAlias": "net6.0",
-          "projectReferences": {}
+          "projectReferences": {
+            "C:\\Users\\genag\\Desktop\\EntityFramework\\EFCoreActivity3\\Activity3\\EFCore_Library\\EFCore_Library.csproj": {
+              "projectPath": "C:\\Users\\genag\\Desktop\\EntityFramework\\EFCoreActivity3\\Activity3\\EFCore_Library\\EFCore_Library.csproj"
+            }
+          }
         }
       },
       "warningProperties": {

@@ -32,7 +32,7 @@ namespace ActivityThree
             } 
         }
 
-        public static IConfigurationRoot Configuration
+        public static IConfigurationRoot ConfigurationRoot
         {
             get
             {
