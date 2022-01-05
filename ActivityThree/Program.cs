@@ -12,6 +12,7 @@ static class Program
     {
         BuildOptions();
         EnsureItems();
+        ListInventory();
     }
 
     static void BuildOptions()
@@ -41,6 +42,14 @@ static class Program
             db.Items.Add(item);
             db.SaveChanges();
         }
+    }
+
+    static void ListInventory()
+    {
+        using var db = new InventoryDbContext(_optionsBuilder.Options);
+        var items = db.Items.OrderByDescending(i => i.Name).ToList();
+
+        items.ForEach(i => Console.WriteLine($"Item : {i.Name}"));
     }
 }
 

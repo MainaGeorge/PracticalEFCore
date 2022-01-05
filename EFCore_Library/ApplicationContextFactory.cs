@@ -15,7 +15,10 @@ namespace EFCore_Library
             var connectionString = configuration.GetConnectionString("InventoryDatabase");
 
             var optionsBuilder = new DbContextOptionsBuilder<InventoryDbContext>();
-            optionsBuilder.UseSqlServer(connectionString);
+            optionsBuilder.UseSqlServer(connectionString, settings =>
+            {
+                settings.EnableRetryOnFailure();
+            });
 
             return new InventoryDbContext(optionsBuilder.Options);
         }
