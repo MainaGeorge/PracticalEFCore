@@ -4,10 +4,10 @@ namespace ActivityThree
 {
     public sealed class ConfigurationBuilderSingleton
     {
-        private static ConfigurationBuilderSingleton? _instance =  null;
+        private static ConfigurationBuilderSingleton _instance =  null;
         private static readonly object _instanceLock = new();
 
-        private static IConfigurationRoot? _configuration;
+        private static IConfigurationRoot _configuration;
 
         private ConfigurationBuilderSingleton()
         {
@@ -36,7 +36,9 @@ namespace ActivityThree
         {
             get
             {
-                if (_configuration == null) { var x = Instance; }
+                if (_configuration == null) {
+                    _ = Instance;
+                }
                 return _configuration;
             }
         }

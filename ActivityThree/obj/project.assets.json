@@ -762,6 +762,7 @@
         "type": "project",
         "framework": ".NETCoreApp,Version=v6.0",
         "dependencies": {
+          "InventoryModels": "1.0.0",
           "Microsoft.EntityFrameworkCore": "6.0.1"
         },
         "compile": {
@@ -769,6 +770,16 @@
         },
         "runtime": {
           "bin/placeholder/EFCore_Library.dll": {}
+        }
+      },
+      "InventoryModels/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v6.0",
+        "compile": {
+          "bin/placeholder/InventoryModels.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/InventoryModels.dll": {}
         }
       }
     }
@@ -2203,6 +2214,11 @@
       "type": "project",
       "path": "../EFCore_Library/EFCore_Library.csproj",
       "msbuildProject": "../EFCore_Library/EFCore_Library.csproj"
+    },
+    "InventoryModels/1.0.0": {
+      "type": "project",
+      "path": "../InventoryModels/InventoryModels.csproj",
+      "msbuildProject": "../InventoryModels/InventoryModels.csproj"
     }
   },
   "projectFileDependencyGroups": {
