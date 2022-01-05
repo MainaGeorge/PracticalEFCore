@@ -763,7 +763,11 @@
         "framework": ".NETCoreApp,Version=v6.0",
         "dependencies": {
           "InventoryModels": "1.0.0",
-          "Microsoft.EntityFrameworkCore": "6.0.1"
+          "Microsoft.EntityFrameworkCore": "6.0.1",
+          "Microsoft.EntityFrameworkCore.SqlServer": "6.0.1",
+          "Microsoft.Extensions.Configuration": "6.0.0",
+          "Microsoft.Extensions.Configuration.FileExtensions": "6.0.0",
+          "Microsoft.Extensions.Configuration.Json": "6.0.0"
         },
         "compile": {
           "bin/placeholder/EFCore_Library.dll": {}

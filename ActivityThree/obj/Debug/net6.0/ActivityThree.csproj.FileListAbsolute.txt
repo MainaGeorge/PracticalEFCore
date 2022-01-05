@@ -65,3 +65,5 @@ C:\Users\genag\Desktop\EntityFramework\EFCoreActivity3\Activity3\ActivityThree\o
 C:\Users\genag\Desktop\EntityFramework\EFCoreActivity3\Activity3\ActivityThree\bin\Debug\net6.0\appsettings.json
 C:\Users\genag\Desktop\EntityFramework\EFCoreActivity3\Activity3\ActivityThree\bin\Debug\net6.0\EFCore_Library.dll
 C:\Users\genag\Desktop\EntityFramework\EFCoreActivity3\Activity3\ActivityThree\bin\Debug\net6.0\EFCore_Library.pdb
+C:\Users\genag\Desktop\EntityFramework\EFCoreActivity3\Activity3\ActivityThree\bin\Debug\net6.0\InventoryModels.dll
+C:\Users\genag\Desktop\EntityFramework\EFCoreActivity3\Activity3\ActivityThree\bin\Debug\net6.0\InventoryModels.pdb
