@@ -1,6 +1,6 @@
 ﻿namespace InventoryModels
 {
-    public class Item
+    public class Item : FullAuditModel
     {
         public int Id { get; set; }
         public string Name { get; set; }
