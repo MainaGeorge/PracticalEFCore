@@ -7,6 +7,8 @@ namespace EFCore_Library
     public class InventoryDbContext : DbContext
     {
         private static IConfigurationRoot _configuration;
+
+        //simulate a user in the system
         private const string _systemUserId = "2fd28110-93d0-427d-9207-d55dbca680fa";
 
         public DbSet<Item> Items { get; set; }
@@ -31,7 +33,7 @@ namespace EFCore_Library
                         case EntityState.Added:
                             auditmodel.CreatedDate = DateTime.Now;
                             if(String.IsNullOrWhiteSpace(auditmodel.CreateByUserId))
-                                 auditmodel.CreateByUserId = _systemUserId;
+                               auditmodel.CreateByUserId = _systemUserId;
                             break;
 
                         case EntityState.Modified:
@@ -59,7 +61,6 @@ namespace EFCore_Library
                    .AddJsonFile("appsettings.json", reloadOnChange: true, optional: true);
 
                 _configuration = builder.Build();
-
 
                 var connectionString = _configuration.GetConnectionString("InventoryDatabase");
 

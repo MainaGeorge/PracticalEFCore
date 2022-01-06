@@ -18,9 +18,7 @@ static class Program
     static void Main()
     {
         BuildOptions();
-        DeleteAllItems();
         EnsureItems();
-        UpdateItems();
         ListInventory();
     }
 
@@ -78,7 +76,7 @@ static class Program
         using var db = new InventoryDbContext(_optionsBuilder.Options);
         var items = db.Items.OrderByDescending(i => i.Name).ToList();
 
-        items.ForEach(i => Console.WriteLine($"Item : {i.Name}"));
+        items?.ForEach(i => Console.WriteLine($"Item : {i.Name}"));
     }
 
     static void UpdateItems()
