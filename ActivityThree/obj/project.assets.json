@@ -776,6 +776,21 @@
           "bin/placeholder/EFCore_Library.dll": {}
         }
       },
+      "InventoryHelper/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v6.0",
+        "dependencies": {
+          "Microsoft.Extensions.Configuration": "6.0.0",
+          "Microsoft.Extensions.Configuration.FileExtensions": "6.0.0",
+          "Microsoft.Extensions.Configuration.Json": "6.0.0"
+        },
+        "compile": {
+          "bin/placeholder/InventoryHelper.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/InventoryHelper.dll": {}
+        }
+      },
       "InventoryModels/1.0.0": {
         "type": "project",
         "framework": ".NETCoreApp,Version=v6.0",
@@ -2219,6 +2234,11 @@
       "path": "../EFCore_Library/EFCore_Library.csproj",
       "msbuildProject": "../EFCore_Library/EFCore_Library.csproj"
     },
+    "InventoryHelper/1.0.0": {
+      "type": "project",
+      "path": "../InventoryHelper/InventoryHelper.csproj",
+      "msbuildProject": "../InventoryHelper/InventoryHelper.csproj"
+    },
     "InventoryModels/1.0.0": {
       "type": "project",
       "path": "../InventoryModels/InventoryModels.csproj",
@@ -2228,6 +2248,7 @@
   "projectFileDependencyGroups": {
     "net6.0": [
       "EFCore_Library >= 1.0.0",
+      "InventoryHelper >= 1.0.0",
       "Microsoft.EntityFrameworkCore >= 6.0.1",
       "Microsoft.EntityFrameworkCore.Design >= 6.0.1",
       "Microsoft.EntityFrameworkCore.SqlServer >= 6.0.1",
@@ -2266,6 +2287,9 @@
           "projectReferences": {
             "C:\\Users\\genag\\Desktop\\EntityFramework\\EFCoreActivity3\\Activity3\\EFCore_Library\\EFCore_Library.csproj": {
               "projectPath": "C:\\Users\\genag\\Desktop\\EntityFramework\\EFCoreActivity3\\Activity3\\EFCore_Library\\EFCore_Library.csproj"
+            },
+            "C:\\Users\\genag\\Desktop\\EntityFramework\\EFCoreActivity3\\Activity3\\InventoryHelper\\InventoryHelper.csproj": {
+              "projectPath": "C:\\Users\\genag\\Desktop\\EntityFramework\\EFCoreActivity3\\Activity3\\InventoryHelper\\InventoryHelper.csproj"
             }
           }
         }

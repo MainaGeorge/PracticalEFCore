@@ -1,5 +1,5 @@
-﻿using ActivityThree;
-using EFCore_Library;
+﻿using EFCore_Library;
+using InventoryHelper;
 using InventoryModels;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
