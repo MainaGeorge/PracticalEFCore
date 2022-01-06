@@ -4,9 +4,11 @@ namespace InventoryModels
 {
     public class Item : FullAuditModel
     {
+        [Key]
         public int Id { get; set; }
 
         [StringLength(InventoryModelsConstants.MAX_NAME_LENGTH)]
+        [Required]
         public string Name { get; set; }
 
         [Range(InventoryModelsConstants.MINIMUM_QUANTITY, InventoryModelsConstants.MAXIMUM_QUANTITY)]
@@ -17,8 +19,11 @@ namespace InventoryModels
 
         [StringLength(InventoryModelsConstants.MAX_DESCRIPTION_LENGTH)]
         public string Description { get; set; }
+
         public bool IsOnSale { get; set; }
+
         public DateTime? PurchaseDate { get; set; }
+
         public DateTime? SoldDate { get; set; }
 
         [Range(InventoryModelsConstants.MINIMUM_PRICE, InventoryModelsConstants.MAXIMUM_PRICE)]
