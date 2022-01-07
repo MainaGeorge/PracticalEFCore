@@ -13,6 +13,7 @@ namespace EFCore_Library
 
         public DbSet<Item> Items { get; set; }
         public DbSet<Category> Categories { get; set; }
+        public DbSet<CategoryDetail> CategoriesDetails { get; set; }
         public InventoryDbContext(DbContextOptions<InventoryDbContext> options) : base(options)
         {
         }
@@ -70,6 +71,27 @@ namespace EFCore_Library
                     settings.EnableRetryOnFailure();
                 });
             }
+        }
+
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            modelBuilder.Entity<Item>()
+                .HasMany(e => e.Players)
+                .WithMany(e => e.Items)
+                .UsingEntity<Dictionary<string, object>>(
+                    "ItemPlayers",
+
+                    ip => ip.HasOne<Player>()
+                            .WithMany()
+                            .HasForeignKey("PlayerId")
+                            .OnDelete(DeleteBehavior.Cascade),
+
+                    ip => ip.HasOne<Item>()
+                            .WithMany()
+                            .HasForeignKey("ItemId")
+                            .OnDelete(DeleteBehavior.Cascade)
+                );
+            base.OnModelCreating(modelBuilder);
         }
     }
 }

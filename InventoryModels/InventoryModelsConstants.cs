@@ -7,6 +7,11 @@
         public const int MAX_NOTES_LENGTH = 2000;
         public const int MAX_USERID_LENGTH = 50;
         public const int MIN_NOTES_LENGTH = 10;
+        public const int MAX_COLORVALUE_LENGTH = 25;
+        public const int MAX_COLORNAME_LENGTH = 25;
+        public const int MAX_PLAYERNAME_LENGTH = 50;
+        public const int MAX_PLAYERDESCRIPTION_LENGTH = 500;
+
 
         public const int MINIMUM_QUANTITY = 0;
         public const int MAXIMUM_QUANTITY = 1000;
