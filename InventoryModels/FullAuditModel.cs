@@ -6,6 +6,7 @@ namespace InventoryModels
 {
     public abstract class FullAuditModel : IIdentityModel, IActivatableModel, IAuditedModel, ISoftDeletable
     {
+        [Key]
         public int Id { get; set; }
 
         public bool IsActive { get;  set ; }

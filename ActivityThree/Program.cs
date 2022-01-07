@@ -18,6 +18,7 @@ static class Program
     static void Main()
     {
         BuildOptions();
+        DeleteAllItems();
         EnsureItems();
         ListInventory();
     }
@@ -61,9 +62,10 @@ static class Program
             { 
                 Name = name,
                 Description=description, 
-                Notes=notes, IsActive=true, 
+                Notes=notes, 
+                IsActive=true, 
                 CreateByUserId=_loggedInUserId, 
-                Quantity=random.Next() 
+                Quantity=random.Next(1, 1000) 
             };
 
             db.Items.Add(item);

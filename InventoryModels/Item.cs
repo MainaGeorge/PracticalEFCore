@@ -1,12 +1,11 @@
 ﻿using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace InventoryModels
 {
     public class Item : FullAuditModel
     {
-        [Key]
-        public int Id { get; set; }
-
+       
         [StringLength(InventoryModelsConstants.MAX_NAME_LENGTH)]
         [Required]
         public string Name { get; set; }
@@ -31,6 +30,10 @@ namespace InventoryModels
 
         [Range(InventoryModelsConstants.MINIMUM_PRICE, InventoryModelsConstants.MAXIMUM_PRICE)]
         public decimal? PurchasePrice { get; set; }
+
+        [ForeignKey(nameof(Category))]
+        public int? CategoryId { get; set; }
+        public virtual Category Category { get; set; } 
 
 
 
