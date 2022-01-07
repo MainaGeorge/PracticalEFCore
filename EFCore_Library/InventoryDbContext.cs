@@ -14,6 +14,7 @@ namespace EFCore_Library
         public DbSet<Item> Items { get; set; }
         public DbSet<Category> Categories { get; set; }
         public DbSet<CategoryDetail> CategoriesDetails { get; set; }
+        public DbSet<Genre> Genres { get; set; }
         public InventoryDbContext(DbContextOptions<InventoryDbContext> options) : base(options)
         {
         }

@@ -34,7 +34,7 @@ namespace InventoryModels
         [ForeignKey(nameof(Category))]
         public int? CategoryId { get; set; }
         public virtual Category Category { get; set; } 
-
+        public List<ItemGenre> ItemGenre { get; set; } = new List<ItemGenre>();
         public virtual List<Player> Players { get; set; } = new List<Player>();
 
 
