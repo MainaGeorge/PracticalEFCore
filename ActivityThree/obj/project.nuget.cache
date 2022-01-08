@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "sXkbLztsdwxxGv5mYND4pGNuBYaO4kV/iik7wyQbO5p+TnCw2Drd4PGcTSBbdhEMJHLw4XKuttamUrwOYZM7Ug==",
+  "dgSpecHash": "i65zFuOwDooNw8gt10fPcY2IgZUAAU+3lhoDdyyiQUycIWGUZMGrnsZFpgAJx8ce4Nf8nddL2X/GJn1TqcSGnQ==",
   "success": true,
   "projectFilePath": "C:\\Users\\genag\\Desktop\\EntityFramework\\EFCoreActivity3\\Activity3\\ActivityThree\\ActivityThree.csproj",
   "expectedPackageFiles": [
@@ -21,6 +21,7 @@
     "C:\\Users\\genag\\.nuget\\packages\\microsoft.extensions.configuration.abstractions\\6.0.0\\microsoft.extensions.configuration.abstractions.6.0.0.nupkg.sha512",
     "C:\\Users\\genag\\.nuget\\packages\\microsoft.extensions.configuration.fileextensions\\6.0.0\\microsoft.extensions.configuration.fileextensions.6.0.0.nupkg.sha512",
     "C:\\Users\\genag\\.nuget\\packages\\microsoft.extensions.configuration.json\\6.0.0\\microsoft.extensions.configuration.json.6.0.0.nupkg.sha512",
+    "C:\\Users\\genag\\.nuget\\packages\\microsoft.extensions.configuration.usersecrets\\5.0.0\\microsoft.extensions.configuration.usersecrets.5.0.0.nupkg.sha512",
     "C:\\Users\\genag\\.nuget\\packages\\microsoft.extensions.dependencyinjection\\6.0.0\\microsoft.extensions.dependencyinjection.6.0.0.nupkg.sha512",
     "C:\\Users\\genag\\.nuget\\packages\\microsoft.extensions.dependencyinjection.abstractions\\6.0.0\\microsoft.extensions.dependencyinjection.abstractions.6.0.0.nupkg.sha512",
     "C:\\Users\\genag\\.nuget\\packages\\microsoft.extensions.fileproviders.abstractions\\6.0.0\\microsoft.extensions.fileproviders.abstractions.6.0.0.nupkg.sha512",

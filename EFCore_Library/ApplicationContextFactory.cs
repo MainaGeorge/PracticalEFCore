@@ -19,6 +19,7 @@ namespace EFCore_Library
             optionsBuilder.UseSqlServer(connectionString, settings =>
             {
                 settings.EnableRetryOnFailure();
+                settings.CommandTimeout(15);
             });
 
             return new InventoryDbContext(optionsBuilder.Options);

@@ -69,3 +69,4 @@ C:\Users\genag\Desktop\EntityFramework\EFCoreActivity3\Activity3\ActivityThree\b
 C:\Users\genag\Desktop\EntityFramework\EFCoreActivity3\Activity3\ActivityThree\bin\Debug\net6.0\InventoryModels.pdb
 C:\Users\genag\Desktop\EntityFramework\EFCoreActivity3\Activity3\ActivityThree\bin\Debug\net6.0\InventoryHelper.dll
 C:\Users\genag\Desktop\EntityFramework\EFCoreActivity3\Activity3\ActivityThree\bin\Debug\net6.0\InventoryHelper.pdb
+C:\Users\genag\Desktop\EntityFramework\EFCoreActivity3\Activity3\ActivityThree\bin\Debug\net6.0\Microsoft.Extensions.Configuration.UserSecrets.dll

@@ -1,8 +1,14 @@
 ﻿using EFCore_Library;
+using EFCore_Library.Migrations.Scripts;
 using InventoryHelper;
 using InventoryModels;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Migrations;
+using Microsoft.EntityFrameworkCore.Migrations.Operations;
+using Microsoft.EntityFrameworkCore.Migrations.Operations.Builders;
 using Microsoft.Extensions.Configuration;
+using System.Reflection;
+using System.Text;
 
 static class Program
 {
@@ -92,5 +98,7 @@ static class Program
         db.SaveChanges();
         
     }
+
+    
 }
 
