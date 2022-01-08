@@ -1,4 +1,5 @@
 ﻿using InventoryModels;
+using InventoryModels.DTOs;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 
@@ -15,6 +16,7 @@ namespace EFCore_Library
         public DbSet<Category> Categories { get; set; }
         public DbSet<CategoryDetail> CategoriesDetails { get; set; }
         public DbSet<Genre> Genres { get; set; }
+        public DbSet<GetItemsForListingDto> ItemsForListing { get; set; }
         public InventoryDbContext(DbContextOptions<InventoryDbContext> options) : base(options)
         {
         }
@@ -92,6 +94,12 @@ namespace EFCore_Library
                             .HasForeignKey("ItemId")
                             .OnDelete(DeleteBehavior.Cascade)
                 );
+
+            modelBuilder
+                .Entity<GetItemsForListingDto>()
+                .HasNoKey()
+                .ToView("ItemsForListing");
+
             base.OnModelCreating(modelBuilder);
         }
     }

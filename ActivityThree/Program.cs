@@ -27,6 +27,7 @@ static class Program
         DeleteAllItems();
         EnsureItems();
         ListInventory();
+        GetItemsForListing();
     }
 
     private static void DeleteAllItems()
@@ -99,6 +100,13 @@ static class Program
         
     }
 
-    
+    static void GetItemsForListing()
+    {
+        using var db = new InventoryDbContext(_optionsBuilder.Options);
+        var results = db.ItemsForListing.FromSqlRaw("EXECUTE dbo.GetItemsForListing").ToList();
+
+        results.ForEach(i => Console.WriteLine($"{i.Name} {i?.CategoryName}"));
+
+    }
 }
 
