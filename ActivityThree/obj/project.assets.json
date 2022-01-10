@@ -2304,19 +2304,23 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\genag\\.nuget\\packages\\": {}
+    "C:\\Users\\george.maina\\.nuget\\packages\\": {},
+    "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\genag\\Desktop\\EntityFramework\\EFCoreActivity3\\Activity3\\ActivityThree\\ActivityThree.csproj",
+      "projectUniqueName": "C:\\Users\\george.maina\\Desktop\\EFCore\\ActivityThree\\ActivityThree.csproj",
       "projectName": "ActivityThree",
-      "projectPath": "C:\\Users\\genag\\Desktop\\EntityFramework\\EFCoreActivity3\\Activity3\\ActivityThree\\ActivityThree.csproj",
-      "packagesPath": "C:\\Users\\genag\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\genag\\Desktop\\EntityFramework\\EFCoreActivity3\\Activity3\\ActivityThree\\obj\\",
+      "projectPath": "C:\\Users\\george.maina\\Desktop\\EFCore\\ActivityThree\\ActivityThree.csproj",
+      "packagesPath": "C:\\Users\\george.maina\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\george.maina\\Desktop\\EFCore\\ActivityThree\\obj\\",
       "projectStyle": "PackageReference",
+      "fallbackFolders": [
+        "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
+      ],
       "configFilePaths": [
-        "C:\\Users\\genag\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\george.maina\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
@@ -2330,11 +2334,11 @@
         "net6.0": {
           "targetAlias": "net6.0",
           "projectReferences": {
-            "C:\\Users\\genag\\Desktop\\EntityFramework\\EFCoreActivity3\\Activity3\\EFCore_Library\\EFCore_Library.csproj": {
-              "projectPath": "C:\\Users\\genag\\Desktop\\EntityFramework\\EFCoreActivity3\\Activity3\\EFCore_Library\\EFCore_Library.csproj"
+            "C:\\Users\\george.maina\\Desktop\\EFCore\\EFCore_Library\\EFCore_Library.csproj": {
+              "projectPath": "C:\\Users\\george.maina\\Desktop\\EFCore\\EFCore_Library\\EFCore_Library.csproj"
             },
-            "C:\\Users\\genag\\Desktop\\EntityFramework\\EFCoreActivity3\\Activity3\\InventoryHelper\\InventoryHelper.csproj": {
-              "projectPath": "C:\\Users\\genag\\Desktop\\EntityFramework\\EFCoreActivity3\\Activity3\\InventoryHelper\\InventoryHelper.csproj"
+            "C:\\Users\\george.maina\\Desktop\\EFCore\\InventoryHelper\\InventoryHelper.csproj": {
+              "projectPath": "C:\\Users\\george.maina\\Desktop\\EFCore\\InventoryHelper\\InventoryHelper.csproj"
             }
           }
         }

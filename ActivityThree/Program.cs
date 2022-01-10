@@ -5,18 +5,20 @@ using Microsoft.Data.SqlClient;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 
-static class Program
+namespace ActivityThree;
+
+internal static class Program
 {
-    private static IConfigurationRoot configurationRoot;
+    private static IConfigurationRoot _configurationRoot;
     private static DbContextOptionsBuilder<InventoryDbContext> _optionsBuilder;
 
     //simulate a user in the system
-    private const string _systemUserId = "2fd28110-93d0-427d-9207-d55dbca680fa";
+    private const string SYSTEM_USER_ID = "2fd28110-93d0-427d-9207-d55dbca680fa";
 
     //simulate a logged in user who is making changes to the db
-    private const string _loggedInUserId = "e2eb8989-a81a-4151-8e86-eb95a7961da2";
+    private const string LOGGED_IN_USER_ID = "e2eb8989-a81a-4151-8e86-eb95a7961da2";
 
-    static void Main()
+    private static void Main()
     {
         BuildOptions();
         EnsureItems();
@@ -35,15 +37,16 @@ static class Program
         db.SaveChanges();
     }
 
-    static void BuildOptions()
+    private static void BuildOptions()
     {
-        configurationRoot = ConfigurationBuilderSingleton.ConfigurationRoot;
+        _configurationRoot = ConfigurationBuilderSingleton.ConfigurationRoot;
         _optionsBuilder = new DbContextOptionsBuilder<InventoryDbContext>();
 
-        _optionsBuilder.UseSqlServer(configurationRoot
+        _optionsBuilder.UseSqlServer(_configurationRoot
             .GetConnectionString("LocalInventoryDatabase"));
     }
-    static void EnsureItems()
+
+    private static void EnsureItems()
     {
         EnsureItem("Batman Begins", "You either die the hero or live long enough to see yourself become the villain", "Christian Bale, Katie Holmes");
         EnsureItem("Inception", "You mustn't be afraid to dream a little bigger, darling", "Leonardo DiCaprio, Tom Hardy, Joseph GordonLevitt");
@@ -56,26 +59,27 @@ static class Program
     {
         var random = new Random();
         using var db = new InventoryDbContext(_optionsBuilder.Options);
+
+        // ReSharper disable once SpecifyStringComparison
         var existingItem =  db.Items.FirstOrDefault(x => x.Name.ToLower() == name.ToLower());
 
-        if(existingItem is null)
-        {
-            var item = new Item 
-            { 
-                Name = name,
-                Description=description, 
-                Notes=notes, 
-                IsActive=true, 
-                CreateByUserId=_loggedInUserId, 
-                Quantity=random.Next(1, 1000) 
-            };
+        if (existingItem is not null) return;
 
-            db.Items.Add(item);
-            db.SaveChanges();
-        }
+        var item = new Item 
+        { 
+            Name = name,
+            Description=description, 
+            Notes=notes, 
+            IsActive=true, 
+            CreateByUserId=LOGGED_IN_USER_ID, 
+            Quantity=random.Next(1, 1000) 
+        };
+
+        db.Items.Add(item);
+        db.SaveChanges();
     }
 
-    static void ListInventory()
+    private static void ListInventory()
     {
         using var db = new InventoryDbContext(_optionsBuilder.Options);
         var items = db.Items.OrderByDescending(i => i.Name).ToList();
@@ -83,7 +87,7 @@ static class Program
         items?.ForEach(i => Console.WriteLine($"Item : {i.Name}"));
     }
 
-    static void UpdateItems()
+    private static void UpdateItems()
     {
         using var db = new InventoryDbContext(_optionsBuilder.Options);
         var items = db.Items.ToList();
@@ -95,7 +99,7 @@ static class Program
         
     }
 
-    static void GetItemsForListing()
+    private static void GetItemsForListing()
     {
         using var db = new InventoryDbContext(_optionsBuilder.Options);
         var results = db.ItemsForListing.FromSqlRaw("EXECUTE dbo.GetItemsForListing").ToList();
@@ -104,16 +108,15 @@ static class Program
 
     }
 
-    static void GetItemsDelimitedString()
+    private static void GetItemsDelimitedString()
     {
         using var db = new InventoryDbContext(_optionsBuilder.Options);
-        var isActiveParm = new SqlParameter("IsActive", 1);
+        var isActiveParameter = new SqlParameter("IsActive", 1);
         var results = db
             .AllItemsOutput
-            .FromSqlRaw("SELECT [dbo].[ItemNamesPipeDelimitedString](@IsActive)AllItems", isActiveParm)
+            .FromSqlRaw("SELECT [dbo].[ItemNamesPipeDelimitedString](@IsActive) AS AllItems", isActiveParameter)
             .FirstOrDefault();
 
         Console.WriteLine($"all active items {results?.AllItems}");
     }
 }
-

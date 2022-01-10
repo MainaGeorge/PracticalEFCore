@@ -12,9 +12,9 @@ namespace EFCore_Library.Migrations.Scripts
             string relativeFileName)
         {
             using var stream = Assembly.GetAssembly(typeof(MigrationBuilderSqlResource))
-                .GetManifestResourceStream(relativeFileName);
+                ?.GetManifestResourceStream(relativeFileName);
             using var ms = new MemoryStream();
-            stream.CopyTo(ms);
+            stream?.CopyTo(ms);
             var data = ms.ToArray();
             var text = Encoding.UTF8.GetString(data, 3, data.Length - 3);
             return mb.Sql(text);

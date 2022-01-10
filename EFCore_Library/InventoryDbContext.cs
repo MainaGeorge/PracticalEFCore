@@ -10,7 +10,7 @@ namespace EFCore_Library
         private static IConfigurationRoot _configuration;
 
         //simulate a user in the system
-        private const string _systemUserId = "2fd28110-93d0-427d-9207-d55dbca680fa";
+        private const string SYSTEM_USER_ID = "2fd28110-93d0-427d-9207-d55dbca680fa";
 
         public DbSet<Item> Items { get; set; }
         public DbSet<Category> Categories { get; set; }
@@ -32,23 +32,25 @@ namespace EFCore_Library
 
             foreach(var entry in tracker.Entries())
             {
-                if(entry.Entity is FullAuditModel auditmodel)
+                if(entry.Entity is FullAuditModel auditModel)
                 {
                     switch (entry.State)
                     {
                         case EntityState.Added:
-                            auditmodel.CreatedDate = DateTime.Now;
-                            if(String.IsNullOrWhiteSpace(auditmodel.CreateByUserId))
-                               auditmodel.CreateByUserId = _systemUserId;
+                            auditModel.CreatedDate = DateTime.Now;
+                            if(string.IsNullOrWhiteSpace(auditModel.CreateByUserId))
+                               auditModel.CreateByUserId = SYSTEM_USER_ID;
                             break;
 
                         case EntityState.Modified:
                         case EntityState.Deleted:
-                            auditmodel.LastModifiedDate = DateTime.Now;
-                            if(String.IsNullOrWhiteSpace(auditmodel.LastModifiedUserId))
-                               auditmodel.LastModifiedUserId = _systemUserId;
+                            auditModel.LastModifiedDate = DateTime.Now;
+                            if(string.IsNullOrWhiteSpace(auditModel.LastModifiedUserId))
+                               auditModel.LastModifiedUserId = SYSTEM_USER_ID;
                             break;
 
+                        case EntityState.Detached:
+                        case EntityState.Unchanged:
                         default:
                             break;
                     }
@@ -60,21 +62,20 @@ namespace EFCore_Library
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            if (!optionsBuilder.IsConfigured)
+            if (optionsBuilder.IsConfigured) return;
+
+            var builder = new ConfigurationBuilder()
+                .SetBasePath(Directory.GetCurrentDirectory())
+                .AddJsonFile("appsettings.json", reloadOnChange: true, optional: true);
+
+            _configuration = builder.Build();
+
+            var connectionString = _configuration.GetConnectionString("InventoryDatabase");
+
+            optionsBuilder.UseSqlServer(connectionString, settings =>
             {
-                var builder = new ConfigurationBuilder()
-                   .SetBasePath(Directory.GetCurrentDirectory())
-                   .AddJsonFile("appsettings.json", reloadOnChange: true, optional: true);
-
-                _configuration = builder.Build();
-
-                var connectionString = _configuration.GetConnectionString("InventoryDatabase");
-
-                optionsBuilder.UseSqlServer(connectionString, settings =>
-                {
-                    settings.EnableRetryOnFailure();
-                });
-            }
+                settings.EnableRetryOnFailure();
+            });
         }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
