@@ -50,7 +50,7 @@ namespace EFCore_Library.Migrations
                     b.Property<string>("Notes")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<DateTime?>("PurchaseDate")
+                    b.Property<DateTime?>("PurchasedDate")
                         .HasColumnType("datetime2");
 
                     b.Property<int>("Quantity")

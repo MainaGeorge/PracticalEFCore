@@ -11,13 +11,13 @@ namespace EFCore_Library.Migrations
             migrationBuilder.RenameColumn(
                 name: "FinalPrice",
                 table: "Items",
-                newName: "PurchasePrice");
+                newName: "PurchasedPrice");
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.RenameColumn(
-                name: "PurchasePrice",
+                name: "PurchasedPrice",
                 table: "Items",
                 newName: "FinalPrice");
         }

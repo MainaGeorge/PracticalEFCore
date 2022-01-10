@@ -10,7 +10,7 @@ namespace EFCore_Library.Migrations
         protected override void Up(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.AddColumn<string>(
-                name: "CreateByUserId",
+                name: "CreatedByUserId",
                 table: "Items",
                 type: "nvarchar(max)",
                 nullable: true);
@@ -45,7 +45,7 @@ namespace EFCore_Library.Migrations
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropColumn(
-                name: "CreateByUserId",
+                name: "CreatedByUserId",
                 table: "Items");
 
             migrationBuilder.DropColumn(

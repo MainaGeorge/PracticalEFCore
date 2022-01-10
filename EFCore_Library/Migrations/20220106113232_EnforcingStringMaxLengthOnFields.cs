@@ -49,7 +49,7 @@ namespace EFCore_Library.Migrations
                 oldNullable: true);
 
             migrationBuilder.AlterColumn<string>(
-                name: "CreateByUserId",
+                name: "CreatedByUserId",
                 table: "Items",
                 type: "nvarchar(50)",
                 maxLength: 50,
@@ -102,7 +102,7 @@ namespace EFCore_Library.Migrations
                 oldNullable: true);
 
             migrationBuilder.AlterColumn<string>(
-                name: "CreateByUserId",
+                name: "CreatedByUserId",
                 table: "Items",
                 type: "nvarchar(max)",
                 nullable: true,

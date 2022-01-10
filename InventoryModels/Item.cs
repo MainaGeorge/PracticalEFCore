@@ -21,7 +21,7 @@ namespace InventoryModels
 
         public bool IsOnSale { get; set; }
 
-        public DateTime? PurchaseDate { get; set; }
+        public DateTime? PurchasedDate { get; set; }
 
         public DateTime? SoldDate { get; set; }
 
@@ -29,7 +29,7 @@ namespace InventoryModels
         public decimal? CurrentOrFinalPrice { get; set; }
 
         [Range(InventoryModelsConstants.MINIMUM_PRICE, InventoryModelsConstants.MAXIMUM_PRICE)]
-        public decimal? PurchasePrice { get; set; }
+        public decimal? PurchasedPrice { get; set; }
 
         [ForeignKey(nameof(Category))]
         public int? CategoryId { get; set; }

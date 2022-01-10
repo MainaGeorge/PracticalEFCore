@@ -12,7 +12,7 @@ namespace InventoryModels
         public bool IsActive { get;  set ; }
 
         [StringLength(InventoryModelsConstants.MAX_USERID_LENGTH)]
-        public string CreateByUserId { get ; set; }
+        public string CreatedByUserId { get ; set; }
         public DateTime CreatedDate { get; set; }
 
         [StringLength(InventoryModelsConstants.MAX_USERID_LENGTH)]

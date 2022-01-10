@@ -41,7 +41,7 @@ namespace EFCore_Library.Migrations
                 nullable: true);
 
             migrationBuilder.AddColumn<DateTime>(
-                name: "PurchaseDate",
+                name: "PurchasedDate",
                 table: "Items",
                 type: "datetime2",
                 nullable: true);
@@ -83,7 +83,7 @@ namespace EFCore_Library.Migrations
                 table: "Items");
 
             migrationBuilder.DropColumn(
-                name: "PurchaseDate",
+                name: "PurchasedDate",
                 table: "Items");
 
             migrationBuilder.DropColumn(

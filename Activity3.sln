@@ -9,7 +9,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EFCore_Library", "EFCore_Li
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "InventoryModels", "InventoryModels\InventoryModels.csproj", "{05940EC9-24BE-4335-A277-B297DF6AD0D9}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "InventoryHelper", "InventoryHelper\InventoryHelper.csproj", "{940BDBB5-44FA-4F89-B4C0-83A5B1FE957A}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "InventoryHelper", "InventoryHelper\InventoryHelper.csproj", "{940BDBB5-44FA-4F89-B4C0-83A5B1FE957A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DataMigrator", "DataMigrator\DataMigrator.csproj", "{367BF849-1628-46BE-9D15-0E5C6D15C40C}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -33,6 +35,10 @@ Global
 		{940BDBB5-44FA-4F89-B4C0-83A5B1FE957A}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{940BDBB5-44FA-4F89-B4C0-83A5B1FE957A}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{940BDBB5-44FA-4F89-B4C0-83A5B1FE957A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{367BF849-1628-46BE-9D15-0E5C6D15C40C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{367BF849-1628-46BE-9D15-0E5C6D15C40C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{367BF849-1628-46BE-9D15-0E5C6D15C40C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{367BF849-1628-46BE-9D15-0E5C6D15C40C}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

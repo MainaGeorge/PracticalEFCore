@@ -4,6 +4,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace InventoryModels
 {
+    [Table("CategoryDetails")]
     public class CategoryDetail : IIdentityModel
     {
         [Key, ForeignKey(nameof(Category))]

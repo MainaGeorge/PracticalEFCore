@@ -9,7 +9,7 @@ namespace EFCore_Library.Migrations
         protected override void Up(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.CreateTable(
-                name: "CategoriesDetails",
+                name: "CategoryDetails",
                 columns: table => new
                 {
                     Id = table.Column<int>(type: "int", nullable: false),
@@ -31,7 +31,7 @@ namespace EFCore_Library.Migrations
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropTable(
-                name: "CategoriesDetails");
+                name: "CategoryDetails");
         }
     }
 }

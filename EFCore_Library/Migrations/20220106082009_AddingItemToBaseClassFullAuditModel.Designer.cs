@@ -32,7 +32,7 @@ namespace EFCore_Library.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
 
-                    b.Property<string>("CreateByUserId")
+                    b.Property<string>("CreatedByUserId")
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<DateTime>("CreatedDate")
@@ -65,7 +65,7 @@ namespace EFCore_Library.Migrations
                     b.Property<string>("Notes")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<DateTime?>("PurchaseDate")
+                    b.Property<DateTime?>("PurchasedDate")
                         .HasColumnType("datetime2");
 
                     b.Property<int>("Quantity")

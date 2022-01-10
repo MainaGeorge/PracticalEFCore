@@ -12,8 +12,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace EFCore_Library.Migrations
 {
     [DbContext(typeof(InventoryDbContext))]
-    [Migration("20220108101409_AddProcedureGetItemsForListing")]
-    partial class AddProcedureGetItemsForListing
+    [Migration("20220110124435_Corrections")]
+    partial class Corrections
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -81,6 +81,60 @@ namespace EFCore_Library.Migrations
                     b.ToTable("CategoryDetails");
                 });
 
+            modelBuilder.Entity("InventoryModels.DTOs.AllItemsPipeDelimitedStringDto", b =>
+                {
+                    b.Property<string>("AllItems")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.ToView("AllItemsOutput");
+                });
+
+            modelBuilder.Entity("InventoryModels.DTOs.GetItemsForListingDto", b =>
+                {
+                    b.Property<string>("CategoryName")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Description")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<bool>("IsActive")
+                        .HasColumnType("bit");
+
+                    b.Property<bool>("IsDeleted")
+                        .HasColumnType("bit");
+
+                    b.Property<string>("Name")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Notes")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.ToView("ItemsForListing");
+                });
+
+            modelBuilder.Entity("InventoryModels.DTOs.GetItemsTotalValueDto", b =>
+                {
+                    b.Property<string>("Description")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("Id")
+                        .HasColumnType("int");
+
+                    b.Property<string>("Name")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<decimal?>("PurchasePrice")
+                        .HasColumnType("decimal(18,2)");
+
+                    b.Property<int>("Quantity")
+                        .HasColumnType("int");
+
+                    b.Property<decimal?>("TotalValue")
+                        .HasColumnType("decimal(18,2)");
+
+                    b.ToView("GetItemsTotalValues");
+                });
+
             modelBuilder.Entity("InventoryModels.Genre", b =>
                 {
                     b.Property<int>("Id")
@@ -117,6 +171,48 @@ namespace EFCore_Library.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Genres");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            CreatedDate = new DateTime(2021, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            IsActive = true,
+                            IsDeleted = false,
+                            Name = "Fantasy"
+                        },
+                        new
+                        {
+                            Id = 2,
+                            CreatedDate = new DateTime(2021, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            IsActive = true,
+                            IsDeleted = false,
+                            Name = "Sci/Fi"
+                        },
+                        new
+                        {
+                            Id = 3,
+                            CreatedDate = new DateTime(2021, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            IsActive = true,
+                            IsDeleted = false,
+                            Name = "Horror"
+                        },
+                        new
+                        {
+                            Id = 4,
+                            CreatedDate = new DateTime(2021, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            IsActive = true,
+                            IsDeleted = false,
+                            Name = "Comedy"
+                        },
+                        new
+                        {
+                            Id = 5,
+                            CreatedDate = new DateTime(2021, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            IsActive = true,
+                            IsDeleted = false,
+                            Name = "Drama"
+                        });
                 });
 
             modelBuilder.Entity("InventoryModels.Item", b =>
@@ -313,7 +409,7 @@ namespace EFCore_Library.Migrations
                     b.HasOne("InventoryModels.Item", null)
                         .WithMany()
                         .HasForeignKey("ItemId")
-                        .OnDelete(DeleteBehavior.Cascade)
+                        .OnDelete(DeleteBehavior.ClientCascade)
                         .IsRequired();
 
                     b.HasOne("InventoryModels.Player", null)

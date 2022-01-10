@@ -1,5 +1,4 @@
-﻿using System.Threading.Channels;
-using EFCore_Library;
+﻿using EFCore_Library;
 using InventoryHelper;
 using InventoryModels;
 using Microsoft.Data.SqlClient;
@@ -73,7 +72,7 @@ internal static class Program
             Description=description, 
             Notes=notes, 
             IsActive=true, 
-            CreateByUserId=LOGGED_IN_USER_ID, 
+            CreatedByUserId=LOGGED_IN_USER_ID, 
             Quantity=random.Next(1, 1000) 
         };
 

@@ -14,7 +14,7 @@ namespace EFCore_Library
 
         public DbSet<Item> Items { get; set; }
         public DbSet<Category> Categories { get; set; }
-        public DbSet<CategoryDetail> CategoriesDetails { get; set; }
+        public DbSet<CategoryDetail> CategoryDetails { get; set; }
         public DbSet<Genre> Genres { get; set; }
         public DbSet<GetItemsForListingDto> ItemsForListing { get; set; }
         public DbSet<AllItemsPipeDelimitedStringDto> AllItemsOutput { get; set; }
@@ -39,8 +39,8 @@ namespace EFCore_Library
                     {
                         case EntityState.Added:
                             auditModel.CreatedDate = DateTime.Now;
-                            if(string.IsNullOrWhiteSpace(auditModel.CreateByUserId))
-                               auditModel.CreateByUserId = SYSTEM_USER_ID;
+                            if(string.IsNullOrWhiteSpace(auditModel.CreatedByUserId))
+                               auditModel.CreatedByUserId = SYSTEM_USER_ID;
                             break;
 
                         case EntityState.Modified:
@@ -95,7 +95,7 @@ namespace EFCore_Library
                     ip => ip.HasOne<Item>()
                             .WithMany()
                             .HasForeignKey("ItemId")
-                            .OnDelete(DeleteBehavior.Cascade)
+                            .OnDelete(DeleteBehavior.ClientCascade)
                 );
 
             modelBuilder
@@ -111,6 +111,18 @@ namespace EFCore_Library
             modelBuilder.Entity<GetItemsTotalValueDto>()
                 .HasNoKey()
                 .ToView("GetItemsTotalValues");
+
+            var genreCreateDate = new DateTime(2021, 01, 01);
+            modelBuilder.Entity<Genre>(g =>
+            {
+                g.HasData(
+                    new Genre { Id = 1, CreatedDate = genreCreateDate, IsActive = true, IsDeleted = false, Name = "Fantasy" },
+                    new Genre { Id = 2, CreatedDate = genreCreateDate, IsActive = true, IsDeleted = false, Name = "Sci/Fi" },
+                    new Genre { Id = 3, CreatedDate = genreCreateDate, IsActive = true, IsDeleted = false, Name = "Horror" },
+                    new Genre { Id = 4, CreatedDate = genreCreateDate, IsActive = true, IsDeleted = false, Name = "Comedy" },
+                    new Genre { Id = 5, CreatedDate = genreCreateDate, IsActive = true, IsDeleted = false, Name = "Drama" }
+                );
+            });
 
             base.OnModelCreating(modelBuilder);
         }

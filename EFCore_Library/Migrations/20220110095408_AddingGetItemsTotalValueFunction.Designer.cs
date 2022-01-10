@@ -32,7 +32,7 @@ namespace EFCore_Library.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
 
-                    b.Property<string>("CreateByUserId")
+                    b.Property<string>("CreatedByUserId")
                         .HasMaxLength(50)
                         .HasColumnType("nvarchar(50)");
 
@@ -78,7 +78,7 @@ namespace EFCore_Library.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("CategoriesDetails");
+                    b.ToTable("CategoryDetails");
                 });
 
             modelBuilder.Entity("InventoryModels.DTOs.AllItemsPipeDelimitedStringDto", b =>
@@ -120,7 +120,7 @@ namespace EFCore_Library.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
 
-                    b.Property<string>("CreateByUserId")
+                    b.Property<string>("CreatedByUserId")
                         .HasMaxLength(50)
                         .HasColumnType("nvarchar(50)");
 
@@ -161,7 +161,7 @@ namespace EFCore_Library.Migrations
                     b.Property<int?>("CategoryId")
                         .HasColumnType("int");
 
-                    b.Property<string>("CreateByUserId")
+                    b.Property<string>("CreatedByUserId")
                         .HasMaxLength(50)
                         .HasColumnType("nvarchar(50)");
 
@@ -200,10 +200,10 @@ namespace EFCore_Library.Migrations
                         .HasMaxLength(2000)
                         .HasColumnType("nvarchar(2000)");
 
-                    b.Property<DateTime?>("PurchaseDate")
+                    b.Property<DateTime?>("PurchasedDate")
                         .HasColumnType("datetime2");
 
-                    b.Property<decimal?>("PurchasePrice")
+                    b.Property<decimal?>("PurchasedPrice")
                         .HasColumnType("decimal(18,2)");
 
                     b.Property<int>("Quantity")
@@ -251,7 +251,7 @@ namespace EFCore_Library.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
 
-                    b.Property<string>("CreateByUserId")
+                    b.Property<string>("CreatedByUserId")
                         .HasMaxLength(50)
                         .HasColumnType("nvarchar(50)");
 

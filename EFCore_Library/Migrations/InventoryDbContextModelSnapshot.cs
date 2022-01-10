@@ -30,7 +30,7 @@ namespace EFCore_Library.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
 
-                    b.Property<string>("CreateByUserId")
+                    b.Property<string>("CreatedByUserId")
                         .HasMaxLength(50)
                         .HasColumnType("nvarchar(50)");
 
@@ -76,7 +76,7 @@ namespace EFCore_Library.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("CategoriesDetails");
+                    b.ToTable("CategoryDetails");
                 });
 
             modelBuilder.Entity("InventoryModels.DTOs.AllItemsPipeDelimitedStringDto", b =>
@@ -110,6 +110,29 @@ namespace EFCore_Library.Migrations
                     b.ToView("ItemsForListing");
                 });
 
+            modelBuilder.Entity("InventoryModels.DTOs.GetItemsTotalValueDto", b =>
+                {
+                    b.Property<string>("Description")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("Id")
+                        .HasColumnType("int");
+
+                    b.Property<string>("Name")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<decimal?>("PurchasePrice")
+                        .HasColumnType("decimal(18,2)");
+
+                    b.Property<int>("Quantity")
+                        .HasColumnType("int");
+
+                    b.Property<decimal?>("TotalValue")
+                        .HasColumnType("decimal(18,2)");
+
+                    b.ToView("GetItemsTotalValues");
+                });
+
             modelBuilder.Entity("InventoryModels.Genre", b =>
                 {
                     b.Property<int>("Id")
@@ -118,7 +141,7 @@ namespace EFCore_Library.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
 
-                    b.Property<string>("CreateByUserId")
+                    b.Property<string>("CreatedByUserId")
                         .HasMaxLength(50)
                         .HasColumnType("nvarchar(50)");
 
@@ -146,6 +169,48 @@ namespace EFCore_Library.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Genres");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            CreatedDate = new DateTime(2021, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            IsActive = true,
+                            IsDeleted = false,
+                            Name = "Fantasy"
+                        },
+                        new
+                        {
+                            Id = 2,
+                            CreatedDate = new DateTime(2021, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            IsActive = true,
+                            IsDeleted = false,
+                            Name = "Sci/Fi"
+                        },
+                        new
+                        {
+                            Id = 3,
+                            CreatedDate = new DateTime(2021, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            IsActive = true,
+                            IsDeleted = false,
+                            Name = "Horror"
+                        },
+                        new
+                        {
+                            Id = 4,
+                            CreatedDate = new DateTime(2021, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            IsActive = true,
+                            IsDeleted = false,
+                            Name = "Comedy"
+                        },
+                        new
+                        {
+                            Id = 5,
+                            CreatedDate = new DateTime(2021, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            IsActive = true,
+                            IsDeleted = false,
+                            Name = "Drama"
+                        });
                 });
 
             modelBuilder.Entity("InventoryModels.Item", b =>
@@ -159,7 +224,7 @@ namespace EFCore_Library.Migrations
                     b.Property<int?>("CategoryId")
                         .HasColumnType("int");
 
-                    b.Property<string>("CreateByUserId")
+                    b.Property<string>("CreatedByUserId")
                         .HasMaxLength(50)
                         .HasColumnType("nvarchar(50)");
 
@@ -198,10 +263,10 @@ namespace EFCore_Library.Migrations
                         .HasMaxLength(2000)
                         .HasColumnType("nvarchar(2000)");
 
-                    b.Property<DateTime?>("PurchaseDate")
+                    b.Property<DateTime?>("PurchasedDate")
                         .HasColumnType("datetime2");
 
-                    b.Property<decimal?>("PurchasePrice")
+                    b.Property<decimal?>("PurchasedPrice")
                         .HasColumnType("decimal(18,2)");
 
                     b.Property<int>("Quantity")
@@ -249,7 +314,7 @@ namespace EFCore_Library.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
 
-                    b.Property<string>("CreateByUserId")
+                    b.Property<string>("CreatedByUserId")
                         .HasMaxLength(50)
                         .HasColumnType("nvarchar(50)");
 
@@ -342,7 +407,7 @@ namespace EFCore_Library.Migrations
                     b.HasOne("InventoryModels.Item", null)
                         .WithMany()
                         .HasForeignKey("ItemId")
-                        .OnDelete(DeleteBehavior.Cascade)
+                        .OnDelete(DeleteBehavior.ClientCascade)
                         .IsRequired();
 
                     b.HasOne("InventoryModels.Player", null)
