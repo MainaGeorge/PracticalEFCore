@@ -12,7 +12,7 @@ namespace EFCore_Library
                     .SetBasePath(Directory.GetCurrentDirectory())
                     .AddJsonFile("appsettings.json", reloadOnChange: true, optional: true);
             var configuration = builder.Build();
-            var connectionString = configuration.GetConnectionString("InventoryDatabase");
+            var connectionString = configuration.GetConnectionString("LocalInventoryDatabase");
 
 
             var optionsBuilder = new DbContextOptionsBuilder<InventoryDbContext>();

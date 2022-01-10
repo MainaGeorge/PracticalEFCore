@@ -1,14 +1,9 @@
 ﻿using EFCore_Library;
-using EFCore_Library.Migrations.Scripts;
 using InventoryHelper;
 using InventoryModels;
+using Microsoft.Data.SqlClient;
 using Microsoft.EntityFrameworkCore;
-using Microsoft.EntityFrameworkCore.Migrations;
-using Microsoft.EntityFrameworkCore.Migrations.Operations;
-using Microsoft.EntityFrameworkCore.Migrations.Operations.Builders;
 using Microsoft.Extensions.Configuration;
-using System.Reflection;
-using System.Text;
 
 static class Program
 {
@@ -24,10 +19,10 @@ static class Program
     static void Main()
     {
         BuildOptions();
-        DeleteAllItems();
         EnsureItems();
         ListInventory();
         GetItemsForListing();
+        GetItemsDelimitedString();
     }
 
     private static void DeleteAllItems()
@@ -46,7 +41,7 @@ static class Program
         _optionsBuilder = new DbContextOptionsBuilder<InventoryDbContext>();
 
         _optionsBuilder.UseSqlServer(configurationRoot
-            .GetConnectionString("InventoryDatabase"));
+            .GetConnectionString("LocalInventoryDatabase"));
     }
     static void EnsureItems()
     {
@@ -107,6 +102,18 @@ static class Program
 
         results.ForEach(i => Console.WriteLine($"{i.Name} {i?.CategoryName}"));
 
+    }
+
+    static void GetItemsDelimitedString()
+    {
+        using var db = new InventoryDbContext(_optionsBuilder.Options);
+        var isActiveParm = new SqlParameter("IsActive", 1);
+        var results = db
+            .AllItemsOutput
+            .FromSqlRaw("SELECT [dbo].[ItemNamesPipeDelimitedString](@IsActive)AllItems", isActiveParm)
+            .FirstOrDefault();
+
+        Console.WriteLine($"all active items {results?.AllItems}");
     }
 }
 
