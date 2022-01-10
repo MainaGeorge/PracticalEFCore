@@ -1,4 +1,5 @@
-﻿using EFCore_Library;
+﻿using System.Threading.Channels;
+using EFCore_Library;
 using InventoryHelper;
 using InventoryModels;
 using Microsoft.Data.SqlClient;
@@ -25,6 +26,7 @@ internal static class Program
         ListInventory();
         GetItemsForListing();
         GetItemsDelimitedString();
+        GetItemsTotalValues();
     }
 
     private static void DeleteAllItems()
@@ -118,5 +120,18 @@ internal static class Program
             .FirstOrDefault();
 
         Console.WriteLine($"all active items {results?.AllItems}");
+    }
+
+    private static void GetItemsTotalValues()
+    {
+        using var db = new InventoryDbContext(_optionsBuilder.Options);
+        var isActiveParameter = new SqlParameter("IsActive", 1);
+
+        var results = db.GetItemsTotalValues
+            .FromSqlRaw("SELECT * FROM [dbo].[GetItemsTotalValue] (@IsActive)", isActiveParameter)
+            .ToList();
+
+        results.ForEach(item => Console.WriteLine($"New Item] {item.Id, -10}" + $"|{item.Name, -50}"
+        + $"|{item.Quantity, -4}" + $"|{item.TotalValue, -5}"));
     }
 }

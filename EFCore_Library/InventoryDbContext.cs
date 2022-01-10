@@ -18,6 +18,7 @@ namespace EFCore_Library
         public DbSet<Genre> Genres { get; set; }
         public DbSet<GetItemsForListingDto> ItemsForListing { get; set; }
         public DbSet<AllItemsPipeDelimitedStringDto> AllItemsOutput { get; set; }
+        public DbSet<GetItemsTotalValueDto> GetItemsTotalValues { get; set; }
         public InventoryDbContext(DbContextOptions<InventoryDbContext> options) : base(options)
         {
         }
@@ -106,6 +107,10 @@ namespace EFCore_Library
                 .Entity<AllItemsPipeDelimitedStringDto>()
                 .HasNoKey()
                 .ToView("AllItemsOutput");
+
+            modelBuilder.Entity<GetItemsTotalValueDto>()
+                .HasNoKey()
+                .ToView("GetItemsTotalValues");
 
             base.OnModelCreating(modelBuilder);
         }

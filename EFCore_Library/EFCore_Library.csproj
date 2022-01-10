@@ -6,12 +6,14 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="Migrations\Scripts\Functions\GetItemsTotalValue.v0.sql" />
     <None Remove="Migrations\Scripts\Functions\ItemNamesPipeDelimitedString\ItemNamesPipeDelimitedString.v0.sql" />
     <None Remove="Migrations\Scripts\StoredProcedures\GetItemsForListing\GetItemsForListing.v0.sql" />
     <None Remove="Migrations\Scripts\StoredProcedures\GetItemsForListing\GetItemsForListing.v1.sql" />
   </ItemGroup>
 
   <ItemGroup>
+    <EmbeddedResource Include="Migrations\Scripts\Functions\GetItemsTotalValue\GetItemsTotalValue.v0.sql" />
     <EmbeddedResource Include="Migrations\Scripts\Functions\ItemNamesPipeDelimitedString\ItemNamesPipeDelimitedString.v0.sql" />
     <EmbeddedResource Include="Migrations\Scripts\StoredProcedures\GetItemsForListing\GetItemsForListing.v0.sql" />
     <EmbeddedResource Include="Migrations\Scripts\StoredProcedures\GetItemsForListing\GetItemsForListing.v1.sql" />
